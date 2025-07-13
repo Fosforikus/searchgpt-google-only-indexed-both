@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TEST A7 – Google-only robots, double indexation</title>
+</head>
+<body>
+  <h1>🧪 TEST A7 – Google-only robots, double indexation</h1>
+
+  <h2>🔍 Objectif du test</h2>
+  <p>
+    Ce test vise à vérifier si SearchGPT s’appuie sur Google pour indexer une page,
+    même lorsque <strong>Bingbot est explicitement bloqué</strong> par le fichier robots.txt.
+    La page est soumise manuellement à l’indexation dans <strong>Google ET Bing</strong>,
+    mais seul <code>Googlebot</code> est autorisé à la crawler.
+  </p>
+
+  <h2>🧾 Phrase absurde à détecter</h2>
+  <p><strong>La loutre logarithmique de Fréjus souffle des haïkus quantiques sur des coquillages fractals.</strong></p>
+
+  <h2>📁 Configuration robots.txt</h2>
+  <pre>
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: *
+Disallow: /
+  </pre>
+
+  <h2>📌 Résultat attendu</h2>
+  <p>
+    Si SearchGPT trouve cette page ou la phrase absurde, cela prouvera qu’il utilise Google Search.
+    Si la page reste invisible pour SearchGPT, cela indiquera qu’il repose exclusivement sur Bing (qui n’a pas pu crawler la page).
+  </p>
+</body>
+</html>
