@@ -1,0 +1,1 @@
+# searchgpt-google-only-indexed-both
